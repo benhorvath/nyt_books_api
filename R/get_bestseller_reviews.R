@@ -3,7 +3,7 @@ library(jsonlite)
 library(RCurl)
 library(urltools)
 
-source('utils.R')
+source('./R/utils.R')
 
 # Returns a given best selling book's reviews
 #

@@ -3,7 +3,7 @@ library(jsonlite)
 library(RCurl)
 library(urltools)
 
-source('utils.R')
+source('./R/utils.R')
 
 # Returns a given best seller list, named by the user. parameters is a named
 # list allowing users to submit queries.

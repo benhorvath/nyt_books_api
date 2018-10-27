@@ -49,8 +49,6 @@ get_bestseller_history <- function(nyt, parameters=NA) {
                first_chapter_link = extract_list_vector_attr(reviews, 'first_chapter_link'),
                sunday_review_link = extract_list_vector_attr(reviews, 'sunday_review_link'),
                article_chapter_link = extract_list_vector_attr(reviews, 'article_chapter_link')) %>%
-        # ranks history to JSON
-        mutate(ranks_history = lapply(df$ranks_history, toJSON)) %>%
         select(-c(isbns, reviews))
     
     return(df)
