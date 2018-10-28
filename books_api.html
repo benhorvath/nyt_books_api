@@ -513,11 +513,12 @@ content: none;
     <section id="main-content">
 <p>The <em>New York Times</em> maintains a number of APIs for developers that need a programmatic way to access their content. Among these is the <a href="http://developer.nytimes.com/books_api.json">Books API</a>, which provides access to the best seller lists.</p>
 <p>This document describes an R implementation to access it.</p>
+<p>Each function is relegated to its own R file in the <code>R</code> directory. Use <code>source</code> to import them.</p>
 <div id="initiation" class="section level1">
 <h1>Initiation</h1>
-<p>First, the user must obtain an NYT developer key. I have stored mine in a private file called <code>config.R</code> in the variable <code>API_KEY</code>:</p>
+<p>First, the user must obtain an NYT developer key. I have stored mine in a file ignored by Git called <code>config.R</code> in the variable <code>API_KEY</code>:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">source</span>(<span class="st">'config.R'</span>)</a></code></pre></div>
-<p>I “connect” to the API by inputting the key into the <code>NewYorkTimesBooks</code> object:</p>
+<p>“Connect” to the API by inputting the key into the <code>NewYorkTimesBooks</code> object:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">source</span>(<span class="st">'./R/nyt_books.R'</span>)</a>
 <a class="sourceLine" id="cb2-2" data-line-number="2">nyt &lt;-<span class="st"> </span><span class="kw">NewYorkTimesBooks</span>(<span class="dt">api_key=</span>API_KEY)</a></code></pre></div>
 <p>Note that there is no real <em>connecting</em> going on here. The <code>NewYorkTimesBooks</code> object is merely a conveniant way to store two pieces of information required by the rest of the methods: the API key, as well as the API’s base URL: <code>https://api.nytimes.com/svc/books/v3</code>.</p>
@@ -742,7 +743,7 @@ content: none;
 </div>
 <div id="retrieve-best-seller-reviews" class="section level1">
 <h1>Retrieve Best Seller Reviews</h1>
-<p>Users can retrieve an index of reviews via <code>get_bestseller_reviews()</code>. This function requires only the <code>nyt</code> object, but accepts a few parameters to help them find a specific work: <code>isbn</code>, <code>title</code>, or <code>author</code>.</p>
+<p>Users can retrieve an index of reviews via <code>get_bestseller_reviews()</code>. This function requires only the <code>nyt</code> object, but accepts a few parameters to help locate specific works: <code>isbn</code>, <code>title</code>, or <code>author</code>.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw">source</span>(<span class="st">'./R/get_bestseller_reviews.R'</span>)</a>
 <a class="sourceLine" id="cb9-2" data-line-number="2">p &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">author=</span><span class="st">'Stephen King'</span>, <span class="dt">title=</span><span class="st">'11/22/63'</span>)</a>
 <a class="sourceLine" id="cb9-3" data-line-number="3">reviews &lt;-<span class="st"> </span><span class="kw">get_bestseller_reviews</span>(nyt, <span class="dt">parameters=</span>p)</a>

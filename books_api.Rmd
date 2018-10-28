@@ -29,15 +29,19 @@ The _New York Times_ maintains a number of APIs for developers that need a progr
 
 This document describes an R implementation to access it.
 
+Each function is relegated to its own R file in the `R` directory. Use `source` to import them.
+
+
+
 # Initiation
 
-First, the user must obtain an NYT developer key. I have stored mine in a private file called `config.R` in the variable `API_KEY`:
+First, the user must obtain an NYT developer key. I have stored mine in a file ignored by Git called `config.R` in the variable `API_KEY`:
 
 ```{r}
 source('config.R')
 ```
 
-I "connect" to the API by inputting the key into the `NewYorkTimesBooks` object:
+"Connect" to the API by inputting the key into the `NewYorkTimesBooks` object:
 
 ```{r, warning=FALSE, message=FALSE}
 source('./R/nyt_books.R')
@@ -100,7 +104,7 @@ str(stephen_king_history)
 
 # Retrieve Best Seller Reviews
 
-Users can retrieve an index of reviews via `get_bestseller_reviews()`. This function requires only the `nyt` object, but accepts a few parameters to help them find a specific work: `isbn`, `title`, or `author`.
+Users can retrieve an index of reviews via `get_bestseller_reviews()`. This function requires only the `nyt` object, but accepts a few parameters to help locate specific works: `isbn`, `title`, or `author`.
 
 
 ```{r, warning=FALSE, message=FALSE}
